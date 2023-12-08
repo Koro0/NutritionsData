@@ -25,4 +25,4 @@ app.use((req, res, next) => {
   next();
 });
 
-module.exports = router;
+module.exports = app;
