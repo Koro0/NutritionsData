@@ -14,4 +14,4 @@ const productSchema = mongoose.Schema({
   sel: { type: Number, required: true },
 });
 
-module.exports = mongoose.model('Product', productSchemas);
+module.exports = mongoose.model('Product', productSchema);
