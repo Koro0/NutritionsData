@@ -13,4 +13,5 @@ const productSchema = mongoose.Schema({
   proteines: { type: Number, required: true },
   sel: { type: Number, required: true },
 });
-export default productSchema;
+
+module.exports = mongoose.model('Product', productSchemas);
