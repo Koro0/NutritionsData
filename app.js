@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
+const app = express();
 
 mongoose
   .connect(process.env.MONGOOSE_URL, {
@@ -10,17 +11,8 @@ mongoose
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
-router.get((req, res, next) => {
-  res.status(201);
-  next();
-});
-
-router.get((req, res, next) => {
-  res.json({ Message: 'Votre requete a bien été recu !' });
-  next();
-});
-
-router.get((req, res, next) => {
+app.use(express.json());
+app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader(
     'Access-Control-Allow-Headers',
@@ -31,9 +23,6 @@ router.get((req, res, next) => {
     'GET, POST, PUT, DELETE, PATCH, OPTIONS'
   );
   next();
-});
-router.get((req, res, next) => {
-  console.log('Réponse envoyée avec succès !');
 });
 
 module.exports = router;
